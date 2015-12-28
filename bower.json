@@ -1,0 +1,24 @@
+{
+  "name": "app",
+  "description": "tp-mobile",
+  "main": "index.js",
+  "authors": [
+    "L"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "123456"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "homepage": "https://github.com/Chersquwn/test#readme",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}

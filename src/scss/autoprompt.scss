@@ -1,0 +1,25 @@
+.autoprompt {
+
+	background-color: #fff;
+	border: 1px solid #ccc;
+
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		$height: 26px;
+
+		box-sizing: border-box;
+		padding: 0 10px;
+		height: $height;
+		line-height: $height;
+		list-style: none;
+	}
+	
+	.hover {
+		background-color: #ccc;
+	}
+
+}
