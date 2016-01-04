@@ -1,5 +1,7 @@
 'use strict';
 
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 ;(function ($) {
 
 	if (typeof $ === 'undefined') {
@@ -70,7 +72,8 @@
 			    len = data.length > this.opts.itemLength ? this.opts.itemLength : data.length;
 
 			for (var i = 0; i < len; i++) {
-				li += '<li data-model="' + data[i].value + '">' + data[i].value + '</li>';
+				data[i] = _typeof(data[i]) === 'object' ? data[i].value : data[i];
+				li += '<li data-model="' + data[i] + '">' + data[i] + '</li>';
 			}
 
 			if (li === '') {
@@ -143,8 +146,6 @@
 			}
 		},
 		bindEvent: function bindEvent(length) {
-			var _this = this;
-
 			var that = this,
 			    userAgent = navigator.userAgent.toLowerCase();
 
@@ -203,7 +204,7 @@
 							turnTo(that.index);
 							break;
 						case 13:
-							if (that.$autoprompt.css('display') !== 'none') {
+							if (that.$autoprompt.css('display') !== 'none' && $('.autoprompt li').hasClass('hover')) {
 								e.preventDefault();
 
 								var value = $('.autoprompt li:eq(' + that.index + ')').data('model');
@@ -217,13 +218,14 @@
 			}
 
 			that.$autoprompt.on('click', 'li', function () {
-				var value = $(_this).data('model');
+				var value = $(this).data('model');
 
 				that.$elem.val(value);
 				that.$autoprompt.css('display', 'none');
 			}).on('hover', 'li', function () {
 				$('.autoprompt li').removeClass('hover');
 				$(this).addClass('hover');
+
 				that.index = $(this).index();
 			});
 		},
